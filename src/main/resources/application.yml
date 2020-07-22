@@ -2,13 +2,18 @@ server:
   port: 8080
 
 spring:
+  #数据库连接配置
   datasource:
-    username: dbuser
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: root
     password: 123
-    url: jdbc:mysql://127.0.0.1:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
 
 
 mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.demo.blog.entity
+  #开启驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
