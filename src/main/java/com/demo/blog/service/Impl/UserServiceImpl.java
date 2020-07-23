@@ -17,4 +17,14 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         return userMapper.findAll();
     }
+
+    @Override
+    public User find(int id) {
+        return userMapper.find(id);
+    }
+
+    @Override
+    public void addUser(User user) {
+        userMapper.addUser(user);
+    }
 }

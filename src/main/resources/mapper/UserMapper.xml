@@ -4,4 +4,13 @@
     <select id="findAll" resultType="com.demo.blog.entity.User">
         select * from user
     </select>
+
+    <select id="find" parameterType="java.lang.Integer" resultType="com.demo.blog.entity.User">
+        select * from user where id = ${id}
+    </select>
+
+    <insert id="addUser" parameterType="com.demo.blog.entity.User">
+        insert into user(id,username,password)
+        values(#{id},#{username},#{password})
+    </insert>
 </mapper>
