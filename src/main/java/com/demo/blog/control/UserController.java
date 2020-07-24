@@ -2,7 +2,6 @@ package com.demo.blog.control;
 
 import com.demo.blog.entity.User;
 import com.demo.blog.service.UserService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +28,17 @@ public class UserController {
     //不加则是Content-Type类型为application/x-www-form-urlencoded的form表单编码格式
     public void addUser(@RequestBody User user) {
         userService.addUser(user);
+    }
+
+    @PutMapping("/updateUser")
+    public void updateUser(@RequestBody User user) {
+        userService.updateUser(user);
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    //入参是占位符，则加@PathVariable，以url地址作为请求
+    //入参不用占位符，加或者不加@RequestParam都是作为请求体的数据
+    public void deleteUser(@PathVariable("id") int id) {
+        userService.deleteUser(id);
     }
 }
